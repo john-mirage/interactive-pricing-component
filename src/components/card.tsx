@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Slider from '@components/slider';
 import Switch from '@components/switch';
 import Features from '@components/features';
 import Button from '@components/button';
@@ -59,16 +60,16 @@ const Divider = styled.div`
     background-color: ${props => props.theme.color.neutral.veryLightGrayishBlue};
 `;
 
-const ButtonLabel = styled.span`
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: ${props => props.theme.color.primary.paleBlue};
-`;
-
 function Card() {
     return (
         <Container>
             <PageViews>100k pageviews</PageViews>
+            <Slider
+                label="Opacity"
+                formatOptions={{ style: 'percent' }}
+                maxValue={1}
+                step={0.25}
+            />
             <PricePerTime>
                 <Price>$16.00</Price>
                 <Period>/ month</Period>
@@ -76,9 +77,7 @@ function Card() {
             <Switch />
             <Divider />
             <Features />
-            <Button>
-                <ButtonLabel>Start my trial</ButtonLabel>
-            </Button>
+            <Button />
         </Container>
     )
 }

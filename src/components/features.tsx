@@ -23,7 +23,7 @@ const Section = styled.div`
 const Icon = styled.svg`
     width: 0.9rem;
     height: auto;
-    margin-right: 1.6rem;
+    margin-right: 1.2rem;
 `;
 
 const IconPath = styled.path`
@@ -45,8 +45,8 @@ const features = [
 function Features() {
     return (
         <Container>
-            {features.map(feature => (
-                <Section>
+            {features.map((feature, index) => (
+                <Section key={index}>
                     <Icon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 8">
                         <IconPath fill="none" stroke-width="2" d="M1 4.134l1.907 1.908L7.949 1"/>
                     </Icon>

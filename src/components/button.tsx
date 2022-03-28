@@ -16,14 +16,19 @@ const Container = styled.button`
     background-color: ${props => props.theme.color.neutral.darkDesaturatedBlue};
 `;
 
+const Label = styled.span`
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: ${props => props.theme.color.primary.paleBlue};
+`;
+
 function Button(props: AriaButtonProps) {
     let buttonRef = useRef() as RefObject<HTMLButtonElement>;
     let { buttonProps } = useButton(props, buttonRef);
-    let { children } = props;
 
     return (
         <Container { ...buttonProps } ref={buttonRef}>
-            { children }
+            <Label>Start my trial</Label>
         </Container>
     )
 }
