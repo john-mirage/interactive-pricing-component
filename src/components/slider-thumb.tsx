@@ -3,6 +3,25 @@ import { useFocusRing } from '@react-aria/focus';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { mergeProps } from '@react-aria/utils';
 import { useRef } from 'react';
+import styled from 'styled-components';
+import thumbImage from '@assets/images/icon-slider.svg';
+
+const ThumbContainer = styled.div`
+    position: absolute;
+    top: 0;
+    left: ${props => props.thumbPosition}%;
+    transform: translateX(-50%);
+`;
+
+const Thumb = styled.div`
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    background-color: ${props => props.theme.color.primary.strongCyan};
+    background-image: url(${thumbImage});
+    background-repeat: no-repeat;
+    background-position: center;
+`;
 
 function SliderThumb(props) {
     let { state, trackRef, index } = props;
@@ -15,32 +34,13 @@ function SliderThumb(props) {
 
     let { focusProps, isFocusVisible } = useFocusRing();
     return (
-        <div
-            style={{
-                position: 'absolute',
-                top: 4,
-                transform: 'translateX(-50%)',
-                left: `${state.getThumbPercent(index) * 100}%`
-            }}
-        >
-            <div
-                {...thumbProps}
-                style={{
-                    width: 20,
-                    height: 20,
-                    borderRadius: '50%',
-                    backgroundColor: isFocusVisible
-                        ? 'orange'
-                        : state.isThumbDragging(index)
-                            ? 'dimgrey'
-                            : 'gray'
-                }}
-            >
+        <ThumbContainer thumbPosition={state.getThumbPercent(index) * 100}>
+            <Thumb {...thumbProps}>
                 <VisuallyHidden>
                     <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
                 </VisuallyHidden>
-            </div>
-        </div>
+            </Thumb>
+        </ThumbContainer>
     );
 }
 

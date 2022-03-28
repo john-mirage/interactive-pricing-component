@@ -3,55 +3,44 @@ import { useSliderState } from '@react-stately/slider';
 import { useNumberFormatter } from '@react-aria/i18n';
 import { useRef } from 'react';
 import SliderThumb from '@components/slider-thumb';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    position: relative;
+    width: 100%;
+    height: auto;
+    touch-action: none;
+    margin-bottom: 2.4rem;
+`;
+
+const TrackContainer = styled.div`
+    position: relative;
+    width: 100%;
+    height: 4rem;
+`;
+
+const Track = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 0.8rem;
+    top: 1.6rem;
+    background-color: ${props => props.theme.color.neutral.veryLightGrayishBlue};
+    border-radius: 9999px;
+`;
 
 function Slider(props) {
     let trackRef = useRef(null);
     let numberFormatter = useNumberFormatter(props.formatOptions);
     let state = useSliderState({ ...props, numberFormatter });
-    let { groupProps, trackProps, labelProps, outputProps } = useSlider(props, state, trackRef);
+    let { groupProps, trackProps } = useSlider(props, state, trackRef);
 
     return (
-        <div
-            {...groupProps}
-            style={{
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                width: '100%',
-                touchAction: 'none'
-            }}
-        >
-            {/* Create a flex container for the label and output element. */}
-            <div style={{ display: 'flex', alignSelf: 'stretch' }}>
-                {props.label &&
-                    <label {...labelProps}>{props.label}</label>}
-                <output {...outputProps} style={{ flex: '1 0 auto', textAlign: 'end' }}>
-                    {state.getThumbValueLabel(0)}
-                </output>
-            </div>
-            {/* The track element holds the visible track line and the thumb. */}
-            <div
-                {...trackProps}
-                ref={trackRef}
-                style={{
-                    position: 'relative',
-                    height: 30,
-                    width: ' 100%'
-                }}
-            >
-                <div
-                    style={{
-                        position: 'absolute',
-                        backgroundColor: 'gray',
-                        height: 3,
-                        top: 13,
-                        width: '100%'
-                    }}
-                />
+        <Container {...groupProps}>
+            <TrackContainer {...trackProps} ref={trackRef}>
+                <Track />
                 <SliderThumb index={0} state={state} trackRef={trackRef} />
-            </div>
-        </div>
+            </TrackContainer>
+        </Container>
     );
 }
 
