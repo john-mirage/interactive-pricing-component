@@ -192,6 +192,12 @@ const GlobalStyle = createGlobalStyle`
     embed,
     object {
         display: block;
+        vertical-align: middle;
+    }
+
+    button {
+        display: block;
+        border: none;
     }
 `;
 

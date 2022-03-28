@@ -12,6 +12,7 @@ const theme = {
             lightGrayishRed: "hsl(14, 92%, 95%)", //Discount Background
             lightRed: "hsl(15, 100%, 70%)", // Discount Text
             paleBlue: "hsl(226, 100%, 87%)", //CTA Text
+            badge: "#FFEDE8", // Badge
         },
         neutral: {
             white: "hsl(0, 0%, 100%)", //Pricing Component Background
