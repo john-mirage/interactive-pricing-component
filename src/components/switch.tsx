@@ -61,7 +61,7 @@ const Track = styled.span<SwitchProps>`
         transform: rotate(0);
     }
 
-    @media screen and (min-width: ${props => props.theme.screen.sm}) {
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
         margin-left: 1.6rem;
         margin-right: 1.6rem;
     }
