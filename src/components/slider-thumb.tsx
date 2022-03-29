@@ -39,7 +39,7 @@ function SliderThumb(props) {
     let inputRef = useRef(null);
     let { thumbProps, inputProps } = useSliderThumb({ index, trackRef, inputRef }, state);
     let { focusProps, isFocusVisible } = useFocusRing();
-    
+
     return (
         <ThumbContainer thumbPosition={state.getThumbPercent(index) * 100}>
             <Thumb isFocused={isFocusVisible} state={state} index={index} {...thumbProps}>

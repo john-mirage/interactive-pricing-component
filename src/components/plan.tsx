@@ -18,6 +18,7 @@ const Container = styled.p`
         width: 50%;
         order: 2;
         justify-content: flex-end;
+        margin-bottom: 0;
     }
 `;
 
@@ -28,6 +29,11 @@ const Price = styled.span`
     letter-spacing: -0.06rem;
     color: ${props => props.theme.color.neutral.darkDesaturatedBlue};
     margin-right: 0.8rem;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        font-size: 4rem;
+        letter-spacing: -0.08rem;
+    }
 `;
 
 const Period = styled.span`
@@ -35,6 +41,10 @@ const Period = styled.span`
     font-size: 1.4rem;
     font-weight: 600;
     color: ${props => props.theme.color.neutral.grayishBlue};
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        font-size: 1.6rem;
+    }
 `;
 
 function Plan({ price, period }: PlanProps) {

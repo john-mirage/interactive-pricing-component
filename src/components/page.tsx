@@ -13,6 +13,10 @@ const Container = styled.main`
     padding-left: 2.4rem;
     padding-right: 2.4rem;
     background-color: ${props => props.theme.color.neutral.white};
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        padding-top: 6.8rem;
+    }
 `;
 
 const Pattern = styled.img`

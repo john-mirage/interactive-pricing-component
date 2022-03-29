@@ -15,6 +15,8 @@ const Container = styled.div`
 
     @media screen and (min-width: ${props => props.theme.screen.md}) {
         order: 3;
+        margin-top: 3.2rem;
+        margin-bottom: 4rem;
     }
 `;
 
@@ -33,6 +35,13 @@ const Track = styled.div`
     border-radius: 9999px;
 `;
 
+const Progress = styled.div`
+    width: ${props => props.lineWidth}%;
+    height: 100%;
+    background-color: ${props => props.theme.color.primary.softCyan};
+    border-radius: 9999px;
+`;
+
 function Slider(props) {
     let trackRef = useRef(null);
     let numberFormatter = useNumberFormatter(props.formatOptions);
@@ -42,7 +51,9 @@ function Slider(props) {
     return (
         <Container {...groupProps}>
             <TrackContainer {...trackProps} ref={trackRef}>
-                <Track />
+                <Track>
+                    <Progress lineWidth={ state.getThumbPercent(0) * 100 } />
+                </Track>
                 <SliderThumb index={0} state={state} trackRef={trackRef} />
             </TrackContainer>
         </Container>

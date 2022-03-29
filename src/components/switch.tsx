@@ -31,6 +31,7 @@ const Container = styled.label`
 `;
 
 const Text = styled.span`
+    display: block;
     font-size: 1.2rem;
     font-weight: 600;
     color: ${props => props.theme.color.neutral.grayishBlue};
@@ -58,6 +59,11 @@ const Track = styled.span<SwitchProps>`
         margin-left: 0.8rem;
         margin-right: 0.8rem;
         transform: rotate(0);
+    }
+
+    @media screen and (min-width: ${props => props.theme.screen.sm}) {
+        margin-left: 1.6rem;
+        margin-right: 1.6rem;
     }
 `;
 

@@ -10,6 +10,10 @@ const Container = styled.section`
     padding-bottom: 3.2rem;
     text-align: center;
     margin-bottom: 3.2rem;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        margin-bottom: 5.4rem;
+    }
 `;
 
 const Image = styled.img`
@@ -30,18 +34,28 @@ const Title = styled.h1`
     line-height: 2.8rem;
     color: ${props => props.theme.color.neutral.darkDesaturatedBlue};
     margin-bottom: 0.8rem;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        font-size: 2.8rem;
+        margin-bottom: 1.6rem;
+    }
 `;
 
 const Subtitle = styled.p`
     position: relative;
     z-index: 20;
-    max-width: 18rem;
+    width: 18rem;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.3rem;
     font-weight: 600;
     line-height: 2.3rem;
     color: ${props => props.theme.color.neutral.grayishBlue};
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        width: auto;
+        font-size: 1.5rem;
+    }
 `;
 
 function Hero() {

@@ -27,7 +27,7 @@ const Container = styled.div`
     padding-right: 2.4rem;
     padding-top: 3.2rem;
     padding-bottom: 3.2rem;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
     background-color: ${props => props.theme.color.neutral.white};
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
@@ -41,6 +41,7 @@ const Container = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         width: 54rem;
+        padding-top: 4.8rem;
         padding-left: 4.8rem;
         padding-right: 4.8rem;
     }
@@ -56,18 +57,22 @@ const PageViews = styled.p`
 
     @media screen and (min-width: ${props => props.theme.screen.md}) {
         width: 50%;
+        margin-bottom: 0;
+        font-size: 1.4rem;
+        letter-spacing: 0.2rem;
     }
 `;
 
 const Divider = styled.div`
     width: 100%;
     height: 0.1rem;
-    margin-top: 3.8rem;
+    margin-top: 4rem;
     margin-bottom: 2.4rem;
     background-color: ${props => props.theme.color.neutral.veryLightGrayishBlue};
 
     @media screen and (min-width: ${props => props.theme.screen.md}) {
         order: 5;
+        margin-bottom: 3.2rem;
     }
 `;
 
