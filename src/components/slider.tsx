@@ -11,6 +11,7 @@ const Container = styled.div`
     height: auto;
     touch-action: none;
     margin-bottom: 2.4rem;
+    cursor: pointer;
 `;
 
 const TrackContainer = styled.div`

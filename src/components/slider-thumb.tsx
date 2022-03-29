@@ -17,7 +17,12 @@ const Thumb = styled.div`
     width: 4rem;
     height: 4rem;
     border-radius: 9999px;
-    background-color: ${props => props.theme.color.primary.strongCyan};
+    background-color: ${props => props.isFocused
+            ? props.theme.color.primary.darkCyan
+            : props.state.isThumbDragging(props.index)
+            ? props.theme.color.primary.cyan
+            : props.theme.color.primary.strongCyan
+    };
     background-image: url(${thumbImage});
     background-repeat: no-repeat;
     background-position: center;
@@ -26,16 +31,12 @@ const Thumb = styled.div`
 function SliderThumb(props) {
     let { state, trackRef, index } = props;
     let inputRef = useRef(null);
-    let { thumbProps, inputProps } = useSliderThumb({
-        index,
-        trackRef,
-        inputRef
-    }, state);
-
+    let { thumbProps, inputProps } = useSliderThumb({ index, trackRef, inputRef }, state);
     let { focusProps, isFocusVisible } = useFocusRing();
+    
     return (
         <ThumbContainer thumbPosition={state.getThumbPercent(index) * 100}>
-            <Thumb {...thumbProps}>
+            <Thumb isFocused={isFocusVisible} state={state} index={index} {...thumbProps}>
                 <VisuallyHidden>
                     <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
                 </VisuallyHidden>

@@ -9,6 +9,8 @@ const theme = {
         primary: {
             softCyan: "hsl(174, 77%, 80%)", //Full slider Bar
             strongCyan: "hsl(174, 86%, 45%)", //Slider Background
+            cyan: "#78EBDC",
+            darkCyan: "#22AEA1", //Focused Thumb
             lightGrayishRed: "hsl(14, 92%, 95%)", //Discount Background
             lightRed: "hsl(15, 100%, 70%)", // Discount Text
             paleBlue: "hsl(226, 100%, 87%)", //CTA Text

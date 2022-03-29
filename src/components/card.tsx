@@ -65,7 +65,6 @@ function Card() {
         <Container>
             <PageViews>100k pageviews</PageViews>
             <Slider
-                label="Opacity"
                 formatOptions={{ style: 'percent' }}
                 maxValue={1}
                 step={0.25}
