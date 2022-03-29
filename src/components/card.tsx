@@ -64,15 +64,20 @@ const PageViews = styled.p`
 `;
 
 const Divider = styled.div`
-    width: 100%;
+    width: calc(100% + 4.8rem);
     height: 0.1rem;
     margin-top: 4rem;
     margin-bottom: 2.4rem;
+    margin-left: -2.4rem;
+    margin-right: -2.4rem;
     background-color: ${props => props.theme.color.neutral.veryLightGrayishBlue};
 
     @media screen and (min-width: ${props => props.theme.screen.md}) {
+        width: calc(100% + 9.6rem);
         order: 5;
         margin-bottom: 3.2rem;
+        margin-left: -4.8rem;
+        margin-right: -4.8rem;
     }
 `;
 
