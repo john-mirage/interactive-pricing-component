@@ -133,7 +133,7 @@ function Card() {
 
     return (
         <Container>
-            <PageViews id="page-views">{ pageViews } pageviews</PageViews>
+            <PageViews>{ pageViews } <span id="page-views">pageviews</span></PageViews>
             <Slider
                 aria-labelledby="page-views"
                 formatOptions={{ style: 'percent' }}
