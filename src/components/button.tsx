@@ -14,12 +14,18 @@ const Container = styled.button`
     margin-right: auto;
     border-radius: 9999px;
     background-color: ${props => props.theme.color.neutral.darkDesaturatedBlue};
+    cursor: pointer;
 `;
 
 const Label = styled.span`
     font-size: 1.2rem;
     font-weight: 800;
     color: ${props => props.theme.color.primary.paleBlue};
+    transition: color 150ms;
+
+    ${Container}:hover & {
+        color: ${props => props.theme.color.neutral.white};
+    }
 `;
 
 function Button(props: AriaButtonProps) {

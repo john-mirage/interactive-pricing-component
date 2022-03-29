@@ -63,17 +63,18 @@ const Divider = styled.div`
 function Card() {
     return (
         <Container>
-            <PageViews>100k pageviews</PageViews>
+            <PageViews id="page-views">100k pageviews</PageViews>
             <Slider
+                aria-labelledby="page-views"
                 formatOptions={{ style: 'percent' }}
                 maxValue={1}
                 step={0.25}
             />
-            <PricePerTime>
+            <PricePerTime id="price-per-time">
                 <Price>$16.00</Price>
                 <Period>/ month</Period>
             </PricePerTime>
-            <Switch />
+            <Switch aria-labelledby="price-per-time" />
             <Divider />
             <Features />
             <Button />
