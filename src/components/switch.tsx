@@ -3,62 +3,28 @@ import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { useToggleState } from '@react-stately/toggle';
 import { useFocusRing } from '@react-aria/focus';
 import { RefObject, useRef } from 'react';
-import styled from 'styled-components';
-import Badge from '@components/badge';
+import styled, { css } from 'styled-components';
 import { AriaSwitchProps } from '@react-types/switch';
 
-interface SwitchProps {
+interface TrackProps {
+    isFocused: boolean;
+    isSelected: boolean;
+}
+
+interface DotProps {
     isSelected: boolean;
 }
 
 const Container = styled.label`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: auto;
-    height: auto;
-
-    @media screen and (min-width: ${props => props.theme.screen.sm}) {
-        flex-direction: row;
-    }
-
-    @media screen and (min-width: ${props => props.theme.screen.md}) {
-        width: 100%;
-        order: 4;
-        justify-content: center;
-    }
-`;
-
-const Text = styled.span`
     display: block;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: ${props => props.theme.color.neutral.grayishBlue};
-`;
-
-const TextWithBadge = styled(Text)`
-    position: relative;
-`;
-
-const Track = styled.span<SwitchProps>`
-    display: block;
-    width: 4.4rem;
-    height: 2.2rem;
-    padding: 0.4rem;
-    border-radius: 9999px;
-    background-color: ${props => props.isSelected ? props.theme.color.primary.softCyan : props.theme.color.neutral.lightGrayishBlue};
     margin-top: 2rem;
     margin-bottom: 2rem;
-    transform: rotate(90deg);
-    cursor: pointer;
 
     @media screen and (min-width: ${props => props.theme.screen.sm}) {
         margin-top: 0;
         margin-bottom: 0;
         margin-left: 0.8rem;
         margin-right: 0.8rem;
-        transform: rotate(0);
     }
 
     @media screen and (min-width: ${props => props.theme.screen.md}) {
@@ -67,7 +33,30 @@ const Track = styled.span<SwitchProps>`
     }
 `;
 
-const Dot = styled.span<SwitchProps>`
+const Track = styled.span<TrackProps>`
+    display: block;
+    width: 4.4rem;
+    height: 2.2rem;
+    padding: 0.4rem;
+    border-radius: 9999px;
+    background-color: ${props => props.isSelected ? props.theme.color.primary.strongCyan : props.theme.color.neutral.lightGrayishBlue};
+    transform: rotate(90deg);
+    transition: background-color 150ms;
+    cursor: pointer;
+    ${props => props.isFocused && css`
+        outline: 0.2rem solid ${props.theme.color.neutral.darkDesaturatedBlue};
+    `}
+
+    &:hover {
+        background-color: ${props => props.isSelected ? props.theme.color.primary.strongCyan : props.theme.color.primary.softCyan};
+    }
+
+    @media screen and (min-width: ${props => props.theme.screen.sm}) {
+        transform: rotate(0);
+    }
+`;
+
+const Dot = styled.span<DotProps>`
     display: block;
     width: 1.4rem;
     height: 1.4rem;
@@ -88,14 +77,9 @@ function Switch(props: AriaSwitchProps) {
             <VisuallyHidden>
                 <input {...inputProps} {...focusProps} ref={ref} />
             </VisuallyHidden>
-            <Text>Monthly Billing</Text>
-            <Track aria-hidden="true" isSelected={state.isSelected}>
+            <Track aria-hidden="true" isFocused={ isFocusVisible } isSelected={ state.isSelected }>
                 <Dot isSelected={state.isSelected} />
             </Track>
-            <TextWithBadge>
-                Yearly Billing
-                <Badge />
-            </TextWithBadge>
         </Container>
     );
 }

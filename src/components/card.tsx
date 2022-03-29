@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Slider from '@components/slider';
-import Switch from '@components/switch';
 import Features from '@components/features';
 import Button from '@components/button';
 import { useEffect, useState } from 'react';
 import Plan from '@components/plan';
+import PlanSwitcher from '@components/plan-switcher';
 
 interface MonthPricePerPageViewsInterface {
     [key: string]: number;
@@ -146,9 +146,8 @@ function Card() {
                 price={price}
                 period={period}
             />
-            <Switch
-                onChange={ handlePeriod }
-                aria-labelledby="price-per-time"
+            <PlanSwitcher
+                switchPlan={ handlePeriod }
             />
             <Divider />
             <Features />

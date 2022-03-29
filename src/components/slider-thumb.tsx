@@ -3,7 +3,7 @@ import { useFocusRing } from '@react-aria/focus';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { mergeProps } from '@react-aria/utils';
 import { useRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import thumbImage from '@assets/images/icon-slider.svg';
 
 const ThumbContainer = styled.div`
@@ -22,16 +22,24 @@ const Thumb = styled.div`
     width: 4rem;
     height: 4rem;
     border-radius: 9999px;
-    background-color: ${props => props.isFocused
-            ? props.theme.color.primary.darkCyan
-            : props.state.isThumbDragging(props.index)
-            ? props.theme.color.primary.cyan
-            : props.theme.color.primary.strongCyan
+    background-color: ${props => props.state.isThumbDragging(props.index)
+        ? props.theme.color.primary.darkCyan
+        : props.theme.color.primary.strongCyan
     };
     background-image: url(${thumbImage});
     background-repeat: no-repeat;
     background-position: center;
     transition: background-color 150ms;
+    ${props => props.isFocused && css`
+        outline: 0.2rem solid ${props.theme.color.neutral.darkDesaturatedBlue};
+    `}
+
+    &:hover {
+        background-color: ${props => props.state.isThumbDragging(props.index)
+            ? props.theme.color.primary.darkCyan
+            : props.theme.color.primary.cyan
+        };
+    }
 `;
 
 function SliderThumb(props) {

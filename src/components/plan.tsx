@@ -49,7 +49,7 @@ const Period = styled.span`
 
 function Plan({ price, period }: PlanProps) {
     return (
-        <Container id="price-per-time">
+        <Container>
             <Price>{ price }</Price>
             <Period>/ { period }</Period>
         </Container>

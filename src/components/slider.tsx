@@ -5,6 +5,10 @@ import { useRef } from 'react';
 import SliderThumb from '@components/slider-thumb';
 import styled from 'styled-components';
 
+interface ProgressProps {
+    lineWidth: number
+}
+
 const Container = styled.div`
     position: relative;
     width: 100%;
@@ -35,7 +39,7 @@ const Track = styled.div`
     border-radius: 9999px;
 `;
 
-const Progress = styled.div`
+const Progress = styled.div<ProgressProps>`
     width: ${props => props.lineWidth}%;
     height: 100%;
     background-color: ${props => props.theme.color.primary.softCyan};

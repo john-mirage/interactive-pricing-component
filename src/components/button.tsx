@@ -16,8 +16,13 @@ const Container = styled.button`
     margin-left: auto;
     margin-right: auto;
     border-radius: 9999px;
-    background-color: ${props => props.theme.color.neutral.darkDesaturatedBlue};
+    background-color: ${props => props.isPressed ? props.theme.color.primary.darkCyan : props.theme.color.neutral.darkDesaturatedBlue};
+    transition: background-color 150ms;
     cursor: pointer;
+
+    &:focus {
+        outline: 0.3rem solid ${props => props.theme.color.primary.paleBlue};
+    }
 
     @media screen and (min-width: ${props => props.theme.screen.md}) {
         order: 7;
@@ -38,10 +43,13 @@ const Label = styled.span`
 
 function Button(props: AriaButtonProps) {
     let buttonRef = useRef() as RefObject<HTMLButtonElement>;
-    let { buttonProps } = useButton(props, buttonRef);
+    let { buttonProps, isPressed } = useButton({
+        ...props,
+        elementType: "button",   
+    }, buttonRef);
 
     return (
-        <Container { ...buttonProps } ref={buttonRef}>
+        <Container isPressed={ isPressed } { ...buttonProps } ref={buttonRef}>
             <Label>Start my trial</Label>
         </Container>
     )
