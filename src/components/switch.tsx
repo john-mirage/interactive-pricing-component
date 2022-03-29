@@ -12,19 +12,32 @@ interface SwitchProps {
 }
 
 const Container = styled.label`
-    position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: auto;
     height: auto;
+
+    @media screen and (min-width: ${props => props.theme.screen.sm}) {
+        flex-direction: row;
+    }
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        width: 100%;
+        order: 4;
+        justify-content: center;
+    }
 `;
 
 const Text = styled.span`
     font-size: 1.2rem;
     font-weight: 600;
     color: ${props => props.theme.color.neutral.grayishBlue};
+`;
+
+const TextWithBadge = styled(Text)`
+    position: relative;
 `;
 
 const Track = styled.span<SwitchProps>`
@@ -34,8 +47,18 @@ const Track = styled.span<SwitchProps>`
     padding: 0.4rem;
     border-radius: 9999px;
     background-color: ${props => props.isSelected ? props.theme.color.primary.softCyan : props.theme.color.neutral.lightGrayishBlue};
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    transform: rotate(90deg);
+    cursor: pointer;
+
+    @media screen and (min-width: ${props => props.theme.screen.sm}) {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0.8rem;
+        margin-right: 0.8rem;
+        transform: rotate(0);
+    }
 `;
 
 const Dot = styled.span<SwitchProps>`
@@ -63,8 +86,10 @@ function Switch(props: AriaSwitchProps) {
             <Track aria-hidden="true" isSelected={state.isSelected}>
                 <Dot isSelected={state.isSelected} />
             </Track>
-            <Text>Yearly Billing</Text>
-            <Badge />
+            <TextWithBadge>
+                Yearly Billing
+                <Badge />
+            </TextWithBadge>
         </Container>
     );
 }

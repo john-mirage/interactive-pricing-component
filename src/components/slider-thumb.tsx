@@ -31,6 +31,7 @@ const Thumb = styled.div`
     background-image: url(${thumbImage});
     background-repeat: no-repeat;
     background-position: center;
+    transition: background-color 150ms;
 `;
 
 function SliderThumb(props) {

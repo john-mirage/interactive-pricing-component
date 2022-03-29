@@ -13,6 +13,12 @@ const Container = styled.p`
     width: auto;
     height: auto;
     margin-bottom: 3.6rem;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        width: 50%;
+        order: 2;
+        justify-content: flex-end;
+    }
 `;
 
 const Price = styled.span`

@@ -14,7 +14,7 @@ interface pageViewsPerStepsInterface {
     [key: string]: string;
 }
 
-const Container = styled.main`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -28,6 +28,21 @@ const Container = styled.main`
     border-radius: 0.8rem;
     background-color: ${props => props.theme.color.neutral.white};
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    @media screen and (min-width: ${props => props.theme.screen.sm}) {
+        width: 32.7rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 54rem;
+        padding-left: 4.8rem;
+        padding-right: 4.8rem;
+    }
 `;
 
 const PageViews = styled.p`
@@ -37,6 +52,10 @@ const PageViews = styled.p`
     text-transform: uppercase;
     color: ${props => props.theme.color.neutral.grayishBlue};
     margin-bottom: 2.4rem;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        width: 50%;
+    }
 `;
 
 const Divider = styled.div`
@@ -45,6 +64,10 @@ const Divider = styled.div`
     margin-top: 3.8rem;
     margin-bottom: 2.4rem;
     background-color: ${props => props.theme.color.neutral.veryLightGrayishBlue};
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        order: 5;
+    }
 `;
 
 const monthPricePerPageViews: MonthPricePerPageViewsInterface = {

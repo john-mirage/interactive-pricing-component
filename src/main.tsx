@@ -5,6 +5,10 @@ import GlobalStyle from '@assets/styles/global-styles';
 import { ThemeProvider } from 'styled-components';
 
 const theme = {
+    screen: {
+        sm: "375px",
+        md: "588px",
+    },
     color: {
         primary: {
             softCyan: "hsl(174, 77%, 80%)", //Full slider Bar

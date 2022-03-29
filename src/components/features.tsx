@@ -8,6 +8,13 @@ const Container = styled.div`
     width: 100%;
     height: auto;
     margin-bottom: 2.4rem;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        width: 50%;
+        order: 6;
+        align-items: flex-start;
+        margin-bottom: 0;
+    }
 `;
 
 const Section = styled.div`

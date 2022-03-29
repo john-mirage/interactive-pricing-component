@@ -12,6 +12,10 @@ const Container = styled.div`
     touch-action: none;
     margin-bottom: 2.4rem;
     cursor: pointer;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        order: 3;
+    }
 `;
 
 const TrackContainer = styled.div`

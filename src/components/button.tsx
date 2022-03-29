@@ -8,13 +8,21 @@ const Container = styled.button`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 17rem;
+    width: 100%;
+    max-width: 17rem;
     height: 4rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
     margin-left: auto;
     margin-right: auto;
     border-radius: 9999px;
     background-color: ${props => props.theme.color.neutral.darkDesaturatedBlue};
     cursor: pointer;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        order: 7;
+        margin-right: 0;
+    }
 `;
 
 const Label = styled.span`
