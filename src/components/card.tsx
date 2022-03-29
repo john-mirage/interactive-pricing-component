@@ -15,6 +15,8 @@ interface pageViewsPerStepsInterface {
 }
 
 const Container = styled.div`
+    position: relative;
+    z-index: 50;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -38,7 +40,6 @@ const Container = styled.div`
     @media screen and (min-width: ${props => props.theme.screen.md}) {
         flex-direction: row;
         flex-wrap: wrap;
-        align-items: center;
         width: 54rem;
         padding-left: 4.8rem;
         padding-right: 4.8rem;

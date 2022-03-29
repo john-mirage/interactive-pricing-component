@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.span`
     position: absolute;
     top: 50%;
-    right: -4.8rem;
+    right: -4.4rem;
     transform: translateY(-50%);
     display: flex;
     flex-direction: row;

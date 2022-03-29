@@ -5,6 +5,7 @@ import backgroundPattern from '@assets/images/bg-pattern.svg';
 
 const Container = styled.main`
     position: relative;
+    z-index: 10;
     width: 100%;
     min-height: 100vh;
     padding-top: 5.6rem;
@@ -16,12 +17,17 @@ const Container = styled.main`
 
 const Pattern = styled.img`
     position: absolute;
-    z-index: -1;
+    z-index: 20;
     top: 0;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 40rem;
     object-fit: cover;
+    object-position: left bottom;
+
+    @media screen and (min-width: ${props => props.theme.screen.md}) {
+        height: 45rem;
+    }
 `;
 
 function Page() {
@@ -29,7 +35,7 @@ function Page() {
         <Container>
             <Hero />
             <Card />
-            <Pattern src={backgroundPattern} alt="background pattern illustration" />
+            <Pattern src={ backgroundPattern } alt="Background pattern illustration" />
         </Container>
     )
 }

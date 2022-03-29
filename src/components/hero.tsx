@@ -3,6 +3,7 @@ import Circles from '@assets/images/pattern-circles.svg';
 
 const Container = styled.section`
     position: relative;
+    z-index: 50;
     width: 100%;
     height: auto;
     padding-top: 3.2rem;
