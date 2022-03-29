@@ -25,6 +25,10 @@ const Section = styled.div`
     width: auto;
     height: auto;
     margin-bottom: 1.6rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 `;
 
 const Icon = styled.svg`
