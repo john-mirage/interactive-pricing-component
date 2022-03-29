@@ -3,6 +3,7 @@ import Slider from '@components/slider';
 import Switch from '@components/switch';
 import Features from '@components/features';
 import Button from '@components/button';
+import { useState } from 'react';
 
 const Container = styled.main`
     display: flex;
@@ -63,21 +64,59 @@ const Divider = styled.div`
     background-color: ${props => props.theme.color.neutral.veryLightGrayishBlue};
 `;
 
+const priceTable = {
+    "10k": 8,
+    "50k": 12,
+    "100k": 16,
+    "500k": 24,
+    "1m": 36,
+};
+
+const steps = {
+    "0": "10k",
+    "25": "50k",
+    "50": "100k",
+    "75": "500k",
+    "100": "1m",
+}
+
+function getPrice(pageViews: string, plan: string) {
+    if (plan === "month") {
+        return priceTable[pageViews];
+    } else if (plan === "year") {
+        return (priceTable[pageViews] * 12) * 0.75;
+    }
+}
+
 function Card() {
+    const [pageViews, setPageViews] = useState("100k");
+    const [plan, setPlan] = useState("month");
+    const price = getPrice(pageViews, plan);
+    const formatedPrice = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(price);
+
+    function handlePageViews(newPageViews: number[]) {
+        setPageViews(steps[String(newPageViews[0] * 100)]);
+    }
+
+    function handlePlan(isSelected: boolean) {
+        setPlan(isSelected ? "year" : "month");
+    }
+
     return (
         <Container>
-            <PageViews id="page-views">100k pageviews</PageViews>
+            <PageViews id="page-views">{ pageViews } pageviews</PageViews>
             <Slider
                 aria-labelledby="page-views"
                 formatOptions={{ style: 'percent' }}
                 maxValue={1}
                 step={0.25}
+                onChange={ handlePageViews }
             />
             <PricePerTime id="price-per-time">
-                <Price>$16.00</Price>
-                <Period>/ month</Period>
+                <Price>{ formatedPrice }</Price>
+                <Period>/ { plan }</Period>
             </PricePerTime>
-            <Switch aria-labelledby="price-per-time" />
+            <Switch onChange={ handlePlan } aria-labelledby="price-per-time" />
             <Divider />
             <Features />
             <Button />
