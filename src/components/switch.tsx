@@ -2,9 +2,14 @@ import { useSwitch } from '@react-aria/switch';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { useToggleState } from '@react-stately/toggle';
 import { useFocusRing } from '@react-aria/focus';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import styled from 'styled-components';
 import Badge from '@components/badge';
+import { AriaSwitchProps } from '@react-types/switch';
+
+interface SwitchProps {
+    isSelected: boolean;
+}
 
 const Container = styled.label`
     position: relative;
@@ -22,7 +27,7 @@ const Text = styled.span`
     color: ${props => props.theme.color.neutral.grayishBlue};
 `;
 
-const Track = styled.span`
+const Track = styled.span<SwitchProps>`
     display: block;
     width: 4.4rem;
     height: 2.2rem;
@@ -33,7 +38,7 @@ const Track = styled.span`
     margin-right: 0.8rem;
 `;
 
-const Dot = styled.span`
+const Dot = styled.span<SwitchProps>`
     display: block;
     width: 1.4rem;
     height: 1.4rem;
@@ -43,9 +48,9 @@ const Dot = styled.span`
     transition: transform 150ms;
 `;
 
-function Switch(props) {
+function Switch(props: AriaSwitchProps) {
     let state = useToggleState(props);
-    let ref = useRef();
+    let ref = useRef() as RefObject<HTMLInputElement>;
     let { inputProps } = useSwitch(props, state, ref);
     let { isFocusVisible, focusProps } = useFocusRing();
 
