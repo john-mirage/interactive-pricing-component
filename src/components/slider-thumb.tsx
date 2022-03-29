@@ -10,7 +10,12 @@ const ThumbContainer = styled.div`
     position: absolute;
     top: 0;
     left: ${props => props.thumbPosition}%;
-    transform: translateX(-50%);
+    transform: ${props => props.thumbPosition === 0
+        ? "translateX(0)"
+        : props.thumbPosition === 100
+        ? "translateX(-100%)"
+        : "translateX(-50%)"
+    };
 `;
 
 const Thumb = styled.div`

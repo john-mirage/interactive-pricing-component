@@ -6,16 +6,7 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 import Badge from '@components/badge';
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-`;
-
-const Content = styled.label`
+const Container = styled.label`
     position: relative;
     display: flex;
     flex-direction: row;
@@ -60,17 +51,15 @@ function Switch(props) {
 
     return (
         <Container>
-            <Content>
-                <VisuallyHidden>
-                    <input {...inputProps} {...focusProps} ref={ref} />
-                </VisuallyHidden>
-                <Text>Monthly Billing</Text>
-                <Track aria-hidden="true" isSelected={state.isSelected}>
-                    <Dot isSelected={state.isSelected} />
-                </Track>
-                <Text>Yearly Billing</Text>
-                <Badge />
-            </Content>
+            <VisuallyHidden>
+                <input {...inputProps} {...focusProps} ref={ref} />
+            </VisuallyHidden>
+            <Text>Monthly Billing</Text>
+            <Track aria-hidden="true" isSelected={state.isSelected}>
+                <Dot isSelected={state.isSelected} />
+            </Track>
+            <Text>Yearly Billing</Text>
+            <Badge />
         </Container>
     );
 }

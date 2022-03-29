@@ -5,6 +5,10 @@ import Features from '@components/features';
 import Button from '@components/button';
 
 const Container = styled.main`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
     height: auto;
     padding-left: 2.4rem;
@@ -14,7 +18,6 @@ const Container = styled.main`
     border-radius: 0.8rem;
     background-color: ${props => props.theme.color.neutral.white};
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    text-align: center;
 `;
 
 const PageViews = styled.p`
@@ -29,9 +32,9 @@ const PageViews = styled.p`
 const PricePerTime = styled.p`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: auto;
     margin-bottom: 3.6rem;
 `;
