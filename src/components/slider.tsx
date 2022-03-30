@@ -4,9 +4,15 @@ import { useNumberFormatter } from '@react-aria/i18n';
 import { useRef } from 'react';
 import SliderThumb from '@components/slider-thumb';
 import styled from 'styled-components';
+import { AriaSliderProps } from '@react-types/slider';
+import { NumberFormatOptions } from "@internationalized/number";
 
 interface ProgressProps {
-    lineWidth: number
+    lineWidth: number;
+}
+
+interface FormatOptionsProps {
+    formatOptions: NumberFormatOptions;
 }
 
 const Container = styled.div`
@@ -46,7 +52,7 @@ const Progress = styled.div<ProgressProps>`
     border-radius: 9999px;
 `;
 
-function Slider(props) {
+function Slider(props: AriaSliderProps & FormatOptionsProps) {
     let trackRef = useRef(null);
     let numberFormatter = useNumberFormatter(props.formatOptions);
     let state = useSliderState({ ...props, numberFormatter });

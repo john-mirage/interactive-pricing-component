@@ -2,11 +2,27 @@ import { useSliderThumb } from '@react-aria/slider';
 import { useFocusRing } from '@react-aria/focus';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { mergeProps } from '@react-aria/utils';
-import { useRef } from 'react';
+import { MutableRefObject, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import thumbImage from '@assets/images/icon-slider.svg';
+import { AriaSliderThumbProps } from '@react-types/slider';
+import { SliderState } from '@react-stately/slider';
 
-const ThumbContainer = styled.div`
+interface SliderThumbProps {
+    state: SliderState;
+    trackRef: MutableRefObject<null>
+}
+
+interface ThumbContainerProps {
+    thumbPosition: number;
+}
+
+interface ThumbProps {
+    isFocused: boolean;
+    isDragging: boolean;
+}
+
+const ThumbContainer = styled.div<ThumbContainerProps>`
     position: absolute;
     top: 0;
     left: ${props => props.thumbPosition}%;
@@ -18,11 +34,11 @@ const ThumbContainer = styled.div`
     };
 `;
 
-const Thumb = styled.div`
+const Thumb = styled.div<ThumbProps>`
     width: 4rem;
     height: 4rem;
     border-radius: 9999px;
-    background-color: ${props => props.state.isThumbDragging(props.index)
+    background-color: ${props => props.isDragging
         ? props.theme.color.primary.darkCyan
         : props.theme.color.primary.strongCyan
     };
@@ -35,14 +51,14 @@ const Thumb = styled.div`
     `}
 
     &:hover {
-        background-color: ${props => props.state.isThumbDragging(props.index)
+        background-color: ${props => props.isDragging
             ? props.theme.color.primary.darkCyan
             : props.theme.color.primary.cyan
         };
     }
 `;
 
-function SliderThumb(props) {
+function SliderThumb(props: AriaSliderThumbProps & SliderThumbProps) {
     let { state, trackRef, index } = props;
     let inputRef = useRef(null);
     let { thumbProps, inputProps } = useSliderThumb({ index, trackRef, inputRef }, state);
@@ -50,7 +66,7 @@ function SliderThumb(props) {
 
     return (
         <ThumbContainer thumbPosition={state.getThumbPercent(index) * 100}>
-            <Thumb isFocused={isFocusVisible} state={state} index={index} {...thumbProps}>
+            <Thumb isFocused={isFocusVisible} isDragging={state.isThumbDragging(index)} {...thumbProps}>
                 <VisuallyHidden>
                     <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
                 </VisuallyHidden>
