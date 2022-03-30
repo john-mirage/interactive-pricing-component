@@ -67,7 +67,7 @@ function SliderThumb(props: AriaSliderThumbProps & SliderThumbProps) {
     return (
         <ThumbContainer thumbPosition={state.getThumbPercent(index) * 100}>
             <Thumb isFocused={isFocusVisible} isDragging={state.isThumbDragging(index)} {...thumbProps}>
-                <VisuallyHidden>
+                <VisuallyHidden elementType="span">
                     <input ref={inputRef} {...mergeProps(inputProps, focusProps)} />
                 </VisuallyHidden>
             </Thumb>
