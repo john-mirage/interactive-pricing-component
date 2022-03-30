@@ -3,7 +3,11 @@ import { useButton } from '@react-aria/button';
 import { RefObject, useRef } from 'react';
 import { AriaButtonProps } from '@react-types/button';
 
-const Container = styled.button`
+interface ButtonProps {
+    isPressed: boolean;
+}
+
+const Container = styled.button<ButtonProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
