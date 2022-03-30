@@ -74,7 +74,7 @@ function Switch(props: AriaSwitchProps) {
 
     return (
         <Container>
-            <VisuallyHidden>
+            <VisuallyHidden elementType="span">
                 <input {...inputProps} {...focusProps} ref={ref} />
             </VisuallyHidden>
             <Track aria-hidden="true" isFocused={ isFocusVisible } isSelected={ state.isSelected }>
